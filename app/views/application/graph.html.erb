@@ -1,0 +1,24 @@
+  <script type='text/javascript' >
+      google.load("visualization" , "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawchart);
+          function drawchart() {
+              var data = google.visualization.arrayToDataTable([
+                      ["Parent Involvement" , "Safety Score"],
+                  [25, 89] ,
+                  [13, 75] ,
+                      ]);
+              var options={
+                  title:"Parent Involvement Vs.Safety Score" ,
+                  hAxis:{title: "Parent Involvement", minValue:0 , maxValue:100},
+                  vAxis:{title:"Safety Score", minValue:0, maxValue:100},
+              } ;
+              var chart = new google.visualization.ScatterChart(document.getElementById("chart")) ;
+              chart.draw(data,options) ;
+          }
+
+  </script>
+
+
+<h1> Data </h1>
+
+  <div id="chart" > </div>
