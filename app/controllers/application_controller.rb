@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
       safetyScore = school[25]
       parentInvolvement = school[27]
       schoolName = school[9]
-      
+
       {"safetyScore" => safetyScore.to_i, "parentInvolvement" => parentInvolvement.to_i, "schoolName" => schoolName}.to_json
     }
 
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_data_from_website
-   HTTParty.get( "https://data.cityofchicago.org/api/views/9xs2-f89t/rows.json").body
+    HTTParty.get("https://data.cityofchicago.org/api/views/9xs2-f89t/rows.json").body
   end
 
 end

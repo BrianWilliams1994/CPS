@@ -3,7 +3,7 @@ CPS::Application.routes.draw do
   # first created -> highest priority.
 
   # Sample of regular route:
-    match '/CPSDATA' => 'application#graphdata'
+  root :to => 'application#graphdata'
   # Keep in mind you can assign values other than :controller and :action
 
   match 'getcpsdata' => 'application#data'
