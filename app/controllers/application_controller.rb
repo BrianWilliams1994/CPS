@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   end
 
   def data
-    raw_cps_data = get_data_from_file
+    raw_cps_data = get_data_from_website
     needed_cps_data = JSON.parse(raw_cps_data)["data"]
 
     safety_score_and_parental_involvement = needed_cps_data.select { |school|
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_data_from_website
-    HTTParty.get "https://data.cityofchicago.org/api/views/9xs2-f89t/rows.json"
+   HTTParty.get( "https://data.cityofchicago.org/api/views/9xs2-f89t/rows.json").body
   end
 
 end
