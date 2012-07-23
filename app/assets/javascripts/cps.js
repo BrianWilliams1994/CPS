@@ -10,19 +10,23 @@ function getParentSafetyData() {
 function drawChart(parentSafetyData) {
     var dataArray = _.map(parentSafetyData, function(schoolString){
         var school = $.parseJSON(schoolString);
-        return [school["safetyScore"], school["parentInvolvement"]];
+        return [school["safetyScore"], school["parentInvolvement"], school["schoolName"]];
     });
 
-    dataArray.unshift(["Parent Involvement" , "Safety Score"])
-
-    var realData = google.visualization.arrayToDataTable(dataArray);
+    var realData = new google.visualization.DataTable();
+    realData.addColumn('number','safetyScore');
+    realData.addColumn('number','parentInvolvement');
+    realData.addColumn({type: 'string', role: 'tooltip'});
+    realData.addRows(dataArray);
 
     var options = {
         title:"Parent Involvement Vs.Safety Score",
+        titleTextStyle:{color:"black",fontSize:25},
         hAxis:{title:"Parent Involvement", minValue:0, maxValue:100},
         vAxis:{title:"Safety Score", minValue:0, maxValue:100},
         width: 1000,
-        height: 1000
+        height: 1000,
+        legend: "none"
     };
 
     var chart = new google.visualization.ScatterChart(document.getElementById("chart"));
