@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
       safetyScore = school[25]
       parentInvolvement = school[27]
 
-      "{safetyScore:#{safetyScore}, parentInvolvement: #{parentInvolvement}, schoolName: '#{school[9]}'}"
+      {"safetyScore" => safetyScore.to_i, "parentInvolvement" => parentInvolvement.to_i}.to_json
     }
 
     render :json => safety_score_and_parental_involvement
