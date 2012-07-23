@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
   end
 
   def data
-
-    needed_cps_data = get_data_from_file()
+    raw_cps_data = get_data_from_file
+    needed_cps_data = JSON.parse(raw_cps_data)["data"]
 
     safety_score_and_parental_involvement = needed_cps_data.select { |school|
       safetyScore = school[25]
@@ -26,8 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_data_from_file
-    raw_cps_data = File.open("#{Rails.root}/vendor/assets/javascripts/schools.json", 'r').read
-    JSON.parse(raw_cps_data)["data"]
+    File.open("#{Rails.root}/vendor/assets/javascripts/schools.json", 'r').read
   end
 
   def get_data_from_website
