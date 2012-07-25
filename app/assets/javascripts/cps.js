@@ -20,7 +20,7 @@ function drawChart(parentSafetyData) {
     realData.addRows(dataArray);
 
     var options = {
-        title:"Parent Involvement Vs.Safety Score",
+        title:"Parent Involvement Vs. Safety Score",
         titleTextStyle:{color:"black",fontSize:25},
         hAxis:{title:"Parent Involvement", minValue:0, maxValue:100},
         vAxis:{title:"Safety Score", minValue:0, maxValue:100},
