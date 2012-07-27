@@ -12,3 +12,5 @@
  *= require_self
  *= require_tree .
  */
+
+.footer {text-align:center;}
